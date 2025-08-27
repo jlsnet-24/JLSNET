@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JLSNET — Jaringan Lintas Selatan</title>
+  <meta name="description" content="JLSNET - Solusi Internet dan Jaringan untuk Desa & UMKM" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#071027; --card:#071426; --muted:#9aa4b2;
+      --jls-blue:#0ea5e9; --jls-red:#ef4444; --glass: rgba(255,255,255,0.04);
+      --accent-gradient: linear-gradient(90deg,var(--jls-blue),var(--jls-red));
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Poppins,Inter,system-ui,Arial;background:linear-gradient(180deg,#020617 0%, #071027 100%);color:#eaf2ff}
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+
+    /* Header */
+    header{position:fixed;left:0;right:0;top:0;backdrop-filter:blur(6px);background:rgba(2,8,20,0.45);border-bottom:1px solid rgba(255,255,255,0.03);z-index:60}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo svg{width:46px;height:46px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+    nav a{padding:8px 10px;border-radius:8px;transition:all .18s}
+    nav a:hover{background:rgba(255,255,255,0.02);transform:translateY(-2px)}
+    .cta{background:var(--accent-gradient);padding:10px 14px;border-radius:10px;color:#021026;font-weight:700}
+
+    /* Hero */
+    .hero-wrap{padding-top:84px}
+    .hero{display:flex;gap:28px;align-items:center;padding:60px 20px;border-radius:16px;background-image:linear-gradient(180deg, rgba(14,165,233,0.05), rgba(239,68,68,0.02));}
+    .hero-left{flex:1}
+    .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px;color:var(--muted)}
+    .hero h1{font-size:38px;margin:12px 0 10px;line-height:1.06}
+    .hero p{margin:0;color:var(--muted);max-width:56ch}
+    .hero .buttons{margin-top:18px;display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:12px;border:none;cursor:pointer;font-weight:600}
+    .btn-primary{background:var(--accent-gradient);color:#021026}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#eaf2ff}
+
+    .hero-right{width:420px}
+    .card-stats{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px}
+    .stat-row{display:flex;justify-content:space-between;gap:8px}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+    .service{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:12px;transition:transform .2s,box-shadow .2s}
+    .service:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    .service h3{margin:10px 0 6px}
+    .price{font-weight:700;margin-top:12px}
+
+    /* Portfolio */
+    .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+    .thumb{height:160px;border-radius:12px;background:linear-gradient(135deg,#071426,#05203a);display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1fr 360px;gap:18px;margin:28px 0}
+    form{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+    label{display:block;margin-bottom:6px;font-size:14px}
+    input,textarea,select{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#eaf2ff}
+    textarea{min-height:120px}
+
+    /* Footer */
+    footer{padding:28px 0;color:var(--muted);font-size:14px}
+
+    /* Floating WA */
+    .wa-float{position:fixed;right:18px;bottom:18px;background:var(--accent-gradient);width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(14,165,233,0.12);z-index:70}
+
+    /* Responsive */
+    @media (max-width:980px){.hero{flex-direction:column}.hero-right{width:100%}.services,.portfolio{grid-template-columns:repeat(2,1fr)}.contact{grid-template-columns:1fr}}
+    @media (max-width:560px){nav ul{display:none}.container{padding:16px}.hero h1{font-size:26px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">
+        <!-- Custom logo dari file -->
+        <img src="logo.png" alt="JLSNET Logo" style="height:80px; width:auto; border-radius:12px;">
+
+        <div>
+          <div style="font-weight:700">JLSNET</div>
+          <div style="font-size:12px; color:var(--muted)">Jaringan Lintas Selatan</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+   
+
+  <main class="hero-wrap">
+    <div class="container">
+      <section class="hero" id="home" data-aos="fade-up">
+        <div class="hero-left">
+          <span class="eyebrow">Solusi Internet untuk Desa & UMKM</span>
+          <h1>JLSNET — Internet Cepat , Stabil & Murah<br/><span style="background:linear-gradient(90deg,#0ea5e9,#ef4444);-webkit-background-clip:text;color:transparent">Mendekatkan Desa ke Era Digital</span></h1>
+          <h2>Tentang JLSNET</h2>
+    <p>
+      <strong>JLSNET (Jaringan Lintas Selatan)</strong> adalah penyedia layanan internet terpercaya
+      yang hadir untuk memberikan solusi konektivitas terbaik di wilayah Kecamatan Pace, Kabupaten Nganjuk,
+      dan sekitarnya.
+    </p>
+    <p>
+      Sebagai salah satu produk unggulan dari <strong>RIZAL MEDIA GROUP</strong>, JLSNET didirikan langsung
+      oleh anggota komunitas <strong>Aktivis Anjuk Ladang Nganjuk</strong> </strong>Rizal Mubarok Selaku Wakil Sekretaris UMUM Bidang kewirausahaan & Pengembangan Profesi</strong>  yang memiliki visi besar untuk
+      membangun kemajuan desa melalui akses digital yang cepat, stabil, dan terjangkau.
+    </p>
+    <p>
+      Dengan dukungan teknologi modern serta pelayanan ramah, JLSNET berkomitmen menghadirkan internet
+      yang <em>stabil, unlimited, dan berkualitas tinggi</em>, sehingga masyarakat dapat lebih produktif dalam
+      bekerja, belajar, hingga menikmati hiburan online.
+    </p>
+    <blockquote>
+      💡 <em>"Kami percaya, internet bukan sekadar koneksi, tetapi jembatan menuju masa depan yang lebih baik."</em>
+    </blockquote>
+  </section>
+
+          <div class="buttons">
+            <button class="btn btn-primary" onclick="location.href='#contact'">Dapatkan Penawaran</button>
+            <a class="btn btn-outline" href="tel:085123715561">Hubungi: 085123715561</a>
+          </div>
+        </div>
+
+       <section style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:28px">
+
+  <!-- Paket Hemat -->
+  <div class="hero-right" data-aos="fade-left">
+    <div class="card-stats" style="padding:16px;background:rgba(255,255,255,0.05);border-radius:12px;min-width:220px;box-shadow:0 2px 8px rgba(0,0,0,0.2);color:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div style="font-size:13px;color:var(--muted)">Paket Hemat</div>
+          <div style="font-weight:700;font-size:18px">Rp100.000 / bulan</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:13px;color:var(--muted)">Kecepatan</div>
+          <div style="font-weight:700">10 Mbps</div>
+        </div>
+      </div>
+      <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden;margin-top:6px">
+        <div style="width:64%;height:10px;background:var(--accent-gradient)"></div>
+      </div>
+      <div style="margin-top:12px;color:var(--muted);font-size:13px">Pasang & setup cepat • Garansi layanan • Support 24/7</div>
+    </div>
+  </div>
+
+  <!-- Paket Sedang -->
+  <div class="hero-right" data-aos="fade-left">
+    <div class="card-stats" style="padding:16px;background:rgba(255,255,255,0.05);border-radius:12px;min-width:220px;box-shadow:0 2px 8px rgba(0,0,0,0.2);color:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div style="font-size:13px;color:var(--muted)">Paket Sedang</div>
+          <div style="font-weight:700;font-size:18px">Rp150.000 / bulan</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:13px;color:var(--muted)">Kecepatan</div>
+          <div style="font-weight:700">18 Mbps</div>
+        </div>
+      </div>
+      <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden;margin-top:6px">
+        <div style="width:75%;height:10px;background:var(--accent-gradient)"></div>
+      </div>
+      <div style="margin-top:12px;color:var(--muted);font-size:13px">Pasang & setup cepat • Garansi layanan • Support 24/7</div>
+    </div>
+  </div>
+
+  <!-- Paket Populer -->
+  <div class="hero-right" data-aos="fade-left">
+    <div class="card-stats" style="padding:16px;background:rgba(255,255,255,0.05);border-radius:12px;min-width:220px;box-shadow:0 2px 8px rgba(0,0,0,0.2);color:#fff">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div>
+          <div style="font-size:13px;color:var(--muted)">Paket Populer</div>
+          <div style="font-weight:700;font-size:18px">Rp200.000 / bulan</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:13px;color:var(--muted)">Kecepatan</div>
+          <div style="font-weight:700">30 Mbps</div>
+        </div>
+      </div>
+      <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden;margin-top:6px">
+        <div style="width:100%;height:10px;background:var(--accent-gradient)"></div>
+      </div>
+      <div style="margin-top:12px;color:var(--muted);font-size:13px">Pasang & setup cepat • Garansi layanan • Support 24/7</div>
+    </div>
+  </div>
+
+</section>
+
+
+
+      <section class="services" id="services">
+        <div class="service" data-aos="fade-up" data-aos-delay="50">
+          <div style="font-size:22px">🌐</div>
+          <h3>Instalasi JARINGAN</h3>
+          <p class="muted">Fiber optic & Wirelles untuk area perumahan dan desa.</p>
+          <div class="price">Mulai Rp100.000 </div>
+        </div>
+        <div class="service" data-aos="fade-up" data-aos-delay="120">
+          <div style="font-size:22px">🔧</div>
+          <h3>Maintenance & Support</h3>
+          <p class="muted">Monitoring & perbaikan jaringan, SLA, dan dukungan teknis.</p>
+          <div class="price">Paket bulanan</div>
+        </div>
+        <div class="service" data-aos="fade-up" data-aos-delay="190">
+          <div style="font-size:22px">🛒</div>
+          <h3>Website , Digital & Mitra</h3>
+          <p class="muted">Pembuatan website, e-commerce, dan optimasi online presence, Support Usaha Anda & Solusi.</p>
+          <div class="price">HUBUNGI KAMI</div>
+        </div>
+      </section>
+
+      <section style="margin-top:28px">
+        <h2>Portofolio</h2>
+        <div class="portfolio" id="portfolio">
+          <div class="thumb" data-aos="zoom-in">
+  <img src="1.png" alt="Proyek Desa A" style="width:100%; border-radius:8px;">
+  
+</div>
+
+          <div class="thumb" data-aos="zoom-in" data-aos-delay="60">
+  <img src="2.png" alt="Proyek Perumahan B" style="width:100%; border-radius:8px;">
+  
+</div>
+
+          <div class="thumb" data-aos="zoom-in" data-aos-delay="120">
+  <img src="3.png" alt="Instalasi GPON C" style="width:100%; border-radius:8px;">
+</div>
+
+        </div>
+      
+        <h2>Kontak & Pendaftaran</h2>
+        <div class="contact">
+          <form onsubmit="sendWhatsApp(event)">
+            <label for="name">Nama Lengkap</label>
+            <input id="name" placeholder="Nama lengkap" required />
+
+            <label for="ktp">No. KTP (opsional)</label>
+            <input id="ktp" placeholder="1234567890123456" />
+
+            <label for="phone">Nomor WhatsApp</label>
+            <input id="phone" placeholder="+62812..." required />
+
+            <label for="paket">Pilih Paket</label>
+            <select id="paket">
+              <option>Rp100.000 - Paket Dasar</option>
+              <option selected>Rp150.000 - Paket Populer</option>
+              <option>Rp200.000 - Paket Pro</option>
+            </select>
+
+            <label for="msg">Catatan / Alamat</label>
+            <textarea id="msg" placeholder="Alamat pemasangan atau catatan tambahan..."></textarea>
+
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn btn-primary" type="submit">Kirim via WhatsApp</button>
+              <button type="button" class="btn btn-outline" onclick="resetForm()">Reset</button>
+            </div>
+          </form>
+
+          <aside style="background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px">
+            <h3 style="margin-top:0">Info Kontak</h3>
+            <p class="muted">Alamat: DSN KLUMPIT</p>
+            <p class="muted">Tel/WA: 0851 2371 5561</p>
+            <p class="muted">Jam Kerja: Senin - Jumat, 08:00 - 17:00</p>
+            <div style="margin-top:12px">
+              <strong>Ikuti Kami</strong>
+              <div style="display:flex;gap:8px;margin-top:8px">
+  <a class="btn btn-outline" href="https://www.facebook.com/profile.php?id=61578170937471" target="_blank">Facebook</a>
+  <a class="btn btn-outline" href="https://www.instagram.com/rizal_mediagroup?igsh=MWttZWkxaGMxczMxZQ==" target="_blank">Instagram</a>
+  <a class="btn btn-outline" href="https://youtube.com/@zallrizall9463?si=BFoE0eDHzDM4ReSC" target="_blank">YouTube</a>
+</div>
+
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer style="margin-top:30px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div>© <strong>JLSNET</strong> — Semua hak cipta dilindungi.</div>
+          <div class="muted">Dibuat RIZAL MEDIA GROUP</div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Floating WhatsApp button -->
+  <a class="wa-float" href="https://wa.me/6281234567890" target="_blank" aria-label="Hubungi via WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.52 3.48A11.88 11.88 0 0 0 12 0C5.373 0 .063 5.31.063 11.94c0 2.102.55 4.18 1.6 6.02L0 24l6.24-1.63a11.9 11.9 0 0 0 5.76 1.44c6.627 0 12-5.37 12-12 0-3.2-1.25-6.2-3.48-8.33z" fill="#fff"/>
+      <path d="M17.28 14.1c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.18.2-.36.22-.66.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2 0-.38-.05-.53-.05-.15-.68-1.6-.93-2.19-.25-.58-.5-.5-.68-.51-.18-.01-.38-.01-.58-.01-.2 0-.53.07-.8.38-.28.31-1.06 1.03-1.06 2.5 0 1.47 1.09 2.89 1.24 3.09.15.2 2.15 3.45 5.21 4.83 3.06 1.38 3.06.92 3.62.86.56-.06 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.43-.07-.13-.25-.2-.55-.35z" fill="#021026"/>
+    </svg>
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({duration:700,once:true});
+
+    function sendWhatsApp(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const ktp = document.getElementById('ktp').value.trim();
+      const phone = document.getElementById('phone').value.replace(/\s+/g,'');
+      const paket = document.getElementById('paket').value;
+      const msg = document.getElementById('msg').value.trim();
+
+      if(!phone){alert('Masukkan nomor WhatsApp Anda.');return}
+      // format nomor WA tanpa tanda plus
+      let number = phone.replace(/^\+|^0/,'62');
+      // fallback ke nomor perusahaan jika user tidak memasukkan nomor valid
+      if(number.length < 9) number = '6281234567890';
+
+      const text = `Halo JLSNET, saya ${encodeURIComponent(name || '-')}.%0ANoKTP: ${encodeURIComponent(ktp || '-')}%0APaket: ${encodeURIComponent(paket)}%0ANomor: ${encodeURIComponent(phone)}%0APesan: ${encodeURIComponent(msg || '-')}`;
+      const url = `https://wa.me/${number}?text=${text}`;
+      window.open(url,'_blank');
+    }
+    function resetForm(){ document.querySelector('form').reset(); }
+  </script>
+</body>
+</html>
