@@ -312,7 +312,7 @@
       // format nomor WA tanpa tanda plus
       let number = phone.replace(/^\+|^0/,'62');
       // fallback ke nomor perusahaan jika user tidak memasukkan nomor valid
-      if(number.length < 9) number = '6281234567890';
+      if(number.length < 9) number = '085123715561';
 
       const text = `Halo JLSNET, saya ${encodeURIComponent(name || '-')}.%0ANoKTP: ${encodeURIComponent(ktp || '-')}%0APaket: ${encodeURIComponent(paket)}%0ANomor: ${encodeURIComponent(phone)}%0APesan: ${encodeURIComponent(msg || '-')}`;
       const url = `https://wa.me/${number}?text=${text}`;
